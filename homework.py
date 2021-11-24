@@ -124,7 +124,9 @@ class Swimming(Training):
         self.count_pool = count_pool
 
     def get_mean_speed(self):
-        mean_speed = self.length_pool * self.count_pool / self.M_IN_KM / self.duration
+        mean_speed = (
+            self.length_pool * self.count_pool / self.M_IN_KM / self.duration
+        )
         return mean_speed
 
     def get_spent_calories(self):
@@ -149,7 +151,9 @@ def read_package(workout_type: str, data: list) -> Training:
             count_pool=data[4],
         )
     elif workout_type == "RUN":
-        return dict_sports["RUN"](action=data[0], duration=data[1], weight=data[2])
+        return dict_sports["RUN"](
+            action=data[0], duration=data[1], weight=data[2]
+        )
     elif workout_type == "WLK":
         return dict_sports["WLK"](
             action=data[0], duration=data[1], weight=data[2], height=data[3]
